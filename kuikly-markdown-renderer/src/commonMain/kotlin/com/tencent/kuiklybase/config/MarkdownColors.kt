@@ -16,9 +16,9 @@ data class MarkdownColors(
     /** 表格背景色 */
     val tableBackground: Long = 0xFFF8F8F8,
     /** 引用块竖线颜色 */
-    val blockQuoteBar: Long = 0xFFD0D7DE,
+    val blockQuoteBar: Long = 0xFF7B8CFA,
     /** 引用块背景色 */
-    val blockQuoteBackground: Long = 0xFFF6F8FA,
+    val blockQuoteBackground: Long = 0xFFF4F5FA,
     /** 链接颜色 */
     val linkColor: Long = 0xFF1A73E8,
     /** 代码文本颜色 */

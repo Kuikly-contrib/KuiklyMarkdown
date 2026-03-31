@@ -22,5 +22,5 @@ data class MarkdownPadding(
     /** 引用块竖线到内容的间距 */
     val blockQuoteBarPaddingLeft: Float = 4f,
     /** 引用块文本上下间距 */
-    val blockQuoteTextVertical: Float = 4f,
+    val blockQuoteTextVertical: Float = 12f,
 )

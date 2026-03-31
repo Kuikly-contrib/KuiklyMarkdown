@@ -32,14 +32,16 @@ fun ViewContainer<*, *>.markdownBlockQuote(
             backgroundColor(config.colors.blockQuoteBackground)
             borderRadius(config.dimens.blockQuoteCornerSize)
             overflow(true)
+            positionRelative()
         }
 
-        // 左侧粗竖线（固定宽度，高度由 flexbox stretch 自动撑满）
+        // 左侧粗竖线（使用绝对定位撑满高度）
         View {
             attr {
                 width(config.dimens.blockQuoteThickness)
                 backgroundColor(config.colors.blockQuoteBar)
-                alignSelfStretch()
+                positionAbsolute()
+                absolutePosition(top = 0f, bottom = 0f, left = 0f)
             }
         }
 

@@ -10,9 +10,9 @@ data class MarkdownDimens(
     /** 代码块背景圆角 */
     val codeBackgroundCornerSize: Float = 8f,
     /** 引用块左侧竖线厚度 */
-    val blockQuoteThickness: Float = 4f,
+    val blockQuoteThickness: Float = 6f,
     /** 引用块背景圆角 */
-    val blockQuoteCornerSize: Float = 6f,
+    val blockQuoteCornerSize: Float = 8f,
     /** 表格最大宽度（0 表示不限制） */
     val tableMaxWidth: Float = 0f,
     /** 表格单元格宽度 */
