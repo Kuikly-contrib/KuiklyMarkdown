@@ -28,5 +28,6 @@ rootProject.buildFileName = buildFileName
 
 include(":androidApp")
 include(":shared")
-include(":kuikly-markdown-renderer")
+include(":KuiklyMarkdown")
 project(":shared").buildFileName = buildFileName
+project(":KuiklyMarkdown").buildFileName = buildFileName

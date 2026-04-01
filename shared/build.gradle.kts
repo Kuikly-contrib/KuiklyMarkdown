@@ -60,7 +60,7 @@ kotlin {
             dependencies {
                 implementation("com.tencent.kuikly-open:core:${Version.getKuiklyVersion()}")
                 implementation("com.tencent.kuikly-open:core-annotations:${Version.getKuiklyVersion()}")
-                implementation(project(":kuikly-markdown-renderer"))
+                implementation(project(":KuiklyMarkdown"))
             }
         }
         val commonTest by getting {
@@ -95,17 +95,21 @@ kotlin {
     }
 }
 
-group = "com.kuikly.kuiklymarkdown"
-version = System.getenv("kuiklyBizVersion") ?: "1.0.0"
+group = rootProject.properties["groupId"]?.toString() ?: "com.kuikly.kuiklymarkdown"
+version = rootProject.properties["mavenVersion"]?.toString()
+    ?: System.getenv("kuiklyBizVersion")
+    ?: "1.0.0"
 
 publishing {
     repositories {
         maven {
             credentials {
-                username = System.getenv("mavenUserName") ?: ""
-                password = System.getenv("mavenPassword") ?: ""
+                username = rootProject.properties["mavenUsername"]?.toString()
+                    ?: System.getenv("mavenUserName") ?: ""
+                password = rootProject.properties["mavenPassword"]?.toString()
+                    ?: System.getenv("mavenPassword") ?: ""
             }
-            rootProject.properties["mavenUr?"]?.toString()?.let { url = uri(it) }
+            rootProject.properties["mavenRepoUrl"]?.toString()?.let { url = uri(it) }
         }
     }
 }

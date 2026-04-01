@@ -25,6 +25,6 @@ dependencyResolutionManagement {
 rootProject.name = "KuiklyMarkdown"
 include(":androidApp")
 include(":shared")
-include(":kuikly-markdown-renderer")
+include(":KuiklyMarkdown")
 include(":h5App")
 include(":miniApp")

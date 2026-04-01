@@ -1,0 +1,35 @@
+Third-Party Open Source Software Notices
+=========================================
+
+This project (KuiklyMarkdown) is licensed under the MIT License.
+See the LICENSE file in the root directory for details.
+
+This project contains source code from the following open source projects,
+which are licensed under the Apache License, Version 2.0.
+These components retain their original Apache 2.0 license:
+
+1. intellij-markdown
+   - Copyright: JetBrains s.r.o.
+   - License: Apache License 2.0
+   - Source: https://github.com/JetBrains/markdown
+   - Used in: KuiklyMarkdown/src/commonMain/kotlin/org/intellij/markdown/
+   - License file: markdown/LICENSE
+
+2. Highlights
+   - Copyright: SnipMeDev (Tomasz Kądziołka)
+   - License: Apache License 2.0
+   - Source: https://github.com/SnipMeDev/Highlights
+   - Used in: KuiklyMarkdown/src/commonMain/kotlin/dev/snipme/highlights/
+   - License file: Highlights/LICENSE
+
+3. multiplatform-markdown-renderer
+   - Copyright: Mike Penz (2023-2025); Erik Hellman (2020, for MarkdownComposer-derived code)
+   - License: Apache License 2.0
+   - Source: https://github.com/mikepenz/multiplatform-markdown-renderer
+   - Note: Code originally derived from MarkdownComposer (MIT, Erik Hellman) was later
+     adapted and expanded under Apache 2.0 by Mike Penz.
+   - Used in: KuiklyMarkdown/src/commonMain/kotlin/org/intellij/markdown/,
+              KuiklyMarkdown/src/commonMain/kotlin/dev/snipme/highlights/
+
+The full text of the Apache License 2.0 for each component can be found
+in their respective LICENSE files listed above.
