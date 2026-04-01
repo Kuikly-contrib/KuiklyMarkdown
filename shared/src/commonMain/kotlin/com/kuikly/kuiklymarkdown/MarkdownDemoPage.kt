@@ -124,7 +124,7 @@ internal class MarkdownDemoPage : BasePager() {
 
 ![示例图片](https://vfiles.gtimg.cn/wuji_dashboard/wupload/xy/starter/62394e19.png)
 
-## 5. 代码块
+## 5. 代码块（语法高亮）
 
 ```kotlin
 fun main() {
@@ -132,6 +132,25 @@ fun main() {
     val config = MarkdownConfig.Default
     println("渲染配置: ${'$'}config")
 }
+```
+
+```python
+def fibonacci(n: int) -> list[int]:
+    result = [0, 1]
+    for i in range(2, n):
+        result.append(result[-1] + result[-2])
+    return result
+
+print(fibonacci(10))
+```
+
+```javascript
+function greet(name) {
+    const message = "Hello, " + name + "!";
+    console.log(message);
+    return message;
+}
+greet("KuiklyMarkdown");
 ```
 
 ## 6. 引用

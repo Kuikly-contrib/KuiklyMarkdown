@@ -27,6 +27,10 @@ data class MarkdownConfig(
     },
     /** 是否将 EOL 视为换行 */
     val eolAsNewLine: Boolean = false,
+    /** 代码高亮配置 */
+    val codeHighlightEnabled: Boolean = true,
+    /** 代码高亮是否使用暗色主题 */
+    val codeHighlightDarkTheme: Boolean = false,
 ) {
     companion object {
         /** 默认配置 */

@@ -31,6 +31,7 @@ kotlin {
                 api("com.tencent.kuikly-open:core:${Version.getKuiklyVersion()}")
                 api("com.tencent.kuikly-open:core-annotations:${Version.getKuiklyVersion()}")
                 api(libs.markdown)
+                api(libs.highlights)
             }
         }
 
