@@ -33,7 +33,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api("com.tencent.kuikly-open:core:${kuiklyVersion}")
-                api("com.tencent.kuiklybase:KuiklyMarkdown:1.0.1-2.0.21")
+                api("com.tencent.kuiklybase:KuiklyMarkdown:1.0.2-2.0.21")
             }
         }
     }
@@ -48,7 +48,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api("com.tencent.kuikly-open:core:${kuiklyVersion}")
-                api("com.tencent.kuiklybase:KuiklyMarkdown:1.0.1-2.0.21-ohos")
+                api("com.tencent.kuiklybase:KuiklyMarkdown:1.0.2-2.0.21-ohos")
             }
         }
     }
