@@ -3,6 +3,7 @@ import com.tencent.kuikly.gradle.config.KuiklyConfig
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
+    kotlin("plugin.serialization") version "2.0.21"
     id("com.android.library")
     id("com.google.devtools.ksp")
     id("maven-publish")
@@ -61,6 +62,9 @@ kotlin {
                 implementation("com.tencent.kuikly-open:core:${Version.getKuiklyVersion()}")
                 implementation("com.tencent.kuikly-open:core-annotations:${Version.getKuiklyVersion()}")
                 implementation(project(":KuiklyMarkdown"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-KBA-002")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.1-KBA-003")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1-KBA-003")
             }
         }
         val commonTest by getting {

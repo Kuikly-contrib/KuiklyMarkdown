@@ -39,3 +39,4 @@ Kotlin-js-store
 *.pyc
 
 /.kotlin
+/.codebuddy

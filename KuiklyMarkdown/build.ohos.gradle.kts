@@ -26,16 +26,11 @@ kotlin {
 
     sourceSets {
         val commonMain by getting {
-            val coreVersion = findProperty("kuiklyCoreVersion")?.toString() ?: Version.getKuiklyOhosVersion()
             dependencies {
-                api("com.tencent.kuikly-open:core:${coreVersion}")
-                api("com.tencent.kuikly-open:core-annotations:${coreVersion}")
-                // coroutine 依赖
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core"){
-                    version{ strictly("1.8.0-KBA-002") }
-                }
-                // Serialization 依赖
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1-KBA-003")
+                compileOnly("com.tencent.kuikly-open:core:${Version.getKuiklyOhosVersion()}")
+                compileOnly("com.tencent.kuikly-open:core-annotations:${Version.getKuiklyOhosVersion()}")
+                compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-KBA-002")
+                compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1-KBA-003")
             }
         }
 

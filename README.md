@@ -15,7 +15,9 @@
   <img src="assert/img.png" width="280" />
   <img src="assert/img_1.png" width="280" />
   <img src="assert/img_2.png" width="280" />
+  <img src="assert/streaming_demo.gif" width="280" />
 </p>
+
 
 
 
@@ -25,15 +27,17 @@
 
 在你的 KMP 模块的 `build.gradle.kts` 中添加依赖：
 
-**标准平台（Android / iOS / Web）：**
+**标准平台（Android / iOS ）：**
 
 ```kotlin
 kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("com.tencent.kuikly-open:core:${kuiklyVersion}")
-                api("com.tencent.kuiklybase:KuiklyMarkdown:1.0.2-2.0.21")
+                implementation("com.tencent.kuikly-open:core:${kuiklyVersion}")
+                implementation("com.tencent.kuiklybase:KuiklyMarkdown:1.0.2-2.0.21")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-KBA-002")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1-KBA-003")
             }
         }
     }
@@ -49,12 +53,15 @@ kotlin {
             dependencies {
                 api("com.tencent.kuikly-open:core:${kuiklyVersion}")
                 api("com.tencent.kuiklybase:KuiklyMarkdown:1.0.2-2.0.21-ohos")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-KBA-002")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1-KBA-003")
             }
         }
     }
 }
 ```
 
+> **注意**：`kotlinx-coroutines-core` 和 `kotlinx-serialization-json` 需要在宿主项目中引入供`KuiklyMarkdown`使用。
 ### 2. 基本使用
 
 在 Kuikly 的 `ViewContainer` 中直接调用 `KuiklyMarkdown` 即可渲染 Markdown 内容：
@@ -219,6 +226,45 @@ MarkdownConfig(
     codeHighlightDarkTheme = false,
 )
 ```
+
+## 流式渲染（AI 对话场景）
+
+针对 AI 大模型流式输出场景，`KuiklyMarkdown` 提供了 **块级增量渲染** 能力，避免每次 token 到达时全量重建 UI。
+
+### 核心原理
+
+1. 每次文本变化时全量解析 AST（intellij-markdown 不支持增量解析）
+2. 将 AST 根节点的 children 映射为 `MarkdownBlock` 列表
+3. 使用 `observableList` + `vfor` 实现块级增量更新 —— 已完成的块保持不变，只重建最后一个正在输入的块
+
+
+
+### API 说明
+
+#### `MarkdownStreamingState`
+
+流式状态管理器，负责解析和块映射。
+
+| 方法 | 说明 |
+|------|------|
+| `update(text, force)` | 解析文本并返回块列表。若文本未变化返回 `null`（除非 `force=true`） |
+| `reset()` | 重置状态，用于开始新一轮对话 |
+| `parseResult` | 最近一次解析结果，供渲染时使用 |
+| `blockNodes` | 缓存的块级 AST 节点列表 |
+
+#### `KuiklyStreamingMarkdown`
+
+流式渲染入口函数，在 `vfor` 闭包中调用。
+
+```kotlin
+fun ViewContainer<*, *>.KuiklyStreamingMarkdown(
+    state: MarkdownStreamingState,  // 流式状态管理器
+    block: MarkdownBlock,            // 当前块
+    config: MarkdownConfig = MarkdownConfig.Default,
+    components: MarkdownComponents = markdownComponents(),
+)
+```
+
 
 ## 自定义组件
 

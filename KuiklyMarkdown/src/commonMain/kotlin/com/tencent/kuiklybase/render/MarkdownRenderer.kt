@@ -67,14 +67,7 @@ fun ViewContainer<*, *>.renderMarkdownElement(
     when (node.type) {
         TEXT -> components.text.invoke(model, this)
         EOL -> components.eol.invoke(model, this)
-        CODE_FENCE -> {
-            println("[MD-Renderer] CODE_FENCE 节点被分发, childrenCount=${node.children.size}, startOffset=${node.startOffset}, endOffset=${node.endOffset}")
-            println("[MD-Renderer] CODE_FENCE 原始文本片段: '${content.substring(node.startOffset, minOf(node.endOffset, node.startOffset + 100))}...'")
-            node.children.forEachIndexed { index, child ->
-                println("[MD-Renderer]   child[$index] type=${child.type}, text='${content.substring(child.startOffset, child.endOffset).take(50)}'")
-            }
-            components.codeFence.invoke(model, this)
-        }
+        CODE_FENCE -> components.codeFence.invoke(model, this)
         CODE_BLOCK -> components.codeBlock.invoke(model, this)
         ATX_1 -> components.heading1.invoke(model, this)
         ATX_2 -> components.heading2.invoke(model, this)

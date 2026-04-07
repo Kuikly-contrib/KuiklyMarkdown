@@ -32,9 +32,7 @@ kotlin {
             dependencies {
                 compileOnly("com.tencent.kuikly-open:core:${coreVersion}")
                 compileOnly("com.tencent.kuikly-open:core-annotations:${coreVersion}")
-                // coroutine 依赖（由宿主项目提供，避免版本冲突）
                 compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-KBA-002")
-                // Serialization 依赖（由宿主项目提供，避免版本冲突）
                 compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1-KBA-003")
             }
         }

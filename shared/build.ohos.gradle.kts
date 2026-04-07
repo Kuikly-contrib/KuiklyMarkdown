@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     id("com.google.devtools.ksp")
     id("maven-publish")
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.21-KBA-010"
 
 }
 
@@ -47,7 +48,10 @@ kotlin {
             dependencies {
                 implementation("com.tencent.kuikly-open:core:${Version.getKuiklyOhosVersion()}")
                 implementation("com.tencent.kuikly-open:core-annotations:${Version.getKuiklyOhosVersion()}")
-
+                implementation(project(":KuiklyMarkdown"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-KBA-002")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.1-KBA-003")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1-KBA-003")
             }
         }
         val commonTest by getting {
