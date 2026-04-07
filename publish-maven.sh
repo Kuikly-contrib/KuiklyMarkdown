@@ -46,7 +46,7 @@ KOTLIN_VERSION_LIST=""
 OHOS_KOTLIN_VERSION_LIST=""
 
 # 默认 Kuikly Core 版本（与 buildSrc/KotlinBuildVar.kt 中 KUIKLY_VERSION 保持一致）
-DEFAULT_KUIKLY_CORE_VERSION="2.7.0"
+DEFAULT_KUIKLY_CORE_VERSION="2.15.0"
 
 # publish 任务
 PUBLISH_TASK=publishAllPublicationsToMavenRepository
